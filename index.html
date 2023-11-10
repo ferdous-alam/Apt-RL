@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>advantage based policy transfer in RL</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1296">
+    <meta property="og:image:height" content="840">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content=""/>
+    <meta property="og:title" content="advantage based policy transfer in RL" />
+    <meta property="og:description" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Representation Learning for Sequential Volumetric Design Tasks" />
+    <meta name="twitter:description" content="Though neural radiance fields (NeRF) have demonstrated impressive view synthesis results on objects and small bounded regions of space, they struggle on 'unbounded' scenes, where the camera may point in any direction and content may exist at any distance. In this setting, existing NeRF-like models often produce blurry or low-resolution renderings (due to the unbalanced detail and scale of nearby and distant objects), are slow to train, and may exhibit artifacts due to the inherent ambiguity of the task of reconstructing a large scene from a small set of images. We present an extension of mip-NeRF (a NeRF variant that addresses sampling and aliasing) that uses a non-linear scene parameterization, online distillation, and a novel distortion-based regularizer to overcome the challenges presented by unbounded scenes. Our model, which we dub 'mip-NeRF 360' as we target scenes in which the camera rotates 360 degrees around a point, reduces mean-squared error by 54% compared to mip-NeRF, and is able to produce realistic synthesized views and detailed depth maps for highly intricate, unbounded real-world scenes." />
+    <meta name="twitter:image" content="" />
+
+
+<link rel="icon" href="img/D_10_S_119_5.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center" style="margin-top: 75px;">
+                <b>An advantage based policy transfer for reinforcement learning with metrics of transferability</b> 
+                <small>
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://ferdous-alam.github.io/">
+                          Md Ferdous Alam
+                        </a>
+                        </br>The Ohio State University
+                    </li>
+                    <li>
+                        <a href="https://parinazn.com/">
+                            Parinaz Naghizadeh
+                        </a>
+                        </br>University of California, San Diego
+                    </li>
+                    <li>
+                        <a href="https://mae.osu.edu/people/hoelzle.1">
+                        David Hoelzle
+                        </a>
+                        </br>The Ohio State University
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="">
+                            <image src="img/360_paper_image.jpg" height="120px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/ferdous-alam/Transfer-RL">
+                            <image src="img/github.png" height="120px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="TODO">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <image src="img/ant.gif"height="500px">
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-center">
+                    Apt-RL algorithm demonstration
+                </p>
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center"  style="font-weight: bold;">
+                    Abstract
+                </h3>
+                <p class="text-justify" style="font-size: 16px;">
+                    Reinforcement learning (RL) can enable sequential decision-making in complex and high-
+                    dimensional environments if the acquisition of a new state-action pair is efficient, i.e., when
+                    interaction with the environment is inexpensive. However, there are a myriad of real-world
+                    applications in which a high number of interactions are infeasible. In these environments,
+                    transfer RL algorithms, which can be used for the transfer of knowledge from one or multiple
+                    source environments to a target environment, have been shown to increase learning speed
+                    and improve initial and asymptotic performance. However, most existing transfer RL algo-
+                    rithms are on-policy and sample inefficient, and often require heuristic choices in algorithm
+                    design. This paper proposes an off-policy Advantage-based Policy Transfer algorithm, APT-
+                    RL, for fixed domain environments. Its novelty is in using the popular notion of “advantage”
+                    as a regularizer, to weigh the knowledge that should be transferred from the source, relative
+                    to new knowledge learned in the target, removing the need for heuristic choices. Further, we
+                    propose a new transfer performance metric to evaluate the performance of our algorithm and
+                    unify existing transfer RL frameworks. Finally, we present a scalable, theoretically-backed
+                    task similarity measurement algorithm to illustrate the alignments between our proposed
+                    transferability metric and similarities between source and target environments. Numerical
+                    experiments on three continuous control benchmark tasks demonstrate that APT-RL out-
+                    performs existing transfer RL algorithms on most tasks, and is 10% to 75% more sample
+                    efficient than learning from scratch. 
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center"  style="font-weight: bold;">
+                    TL:DR
+                </h3>
+                <p class="text-justify" style="font-size: 16px;">
+                   goes here
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center"  style="font-weight: bold;">
+                    Results
+                </h3>
+                <p class="text-justify" style="font-size: 16px;">
+                   goes here
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center"  style="font-weight: bold;">
+                    Citation
+                </h3>
+                <p class="text-justify" style="font-size: 16px;">
+                   goes here
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center"  style="font-weight: bold;">
+                    Acknowledgements
+                </h3>
+                <p class="text-justify" style="font-size: 16px;">
+                   goes here
+                </p>
+            </div>
+        </div>
+
+
+
+</body>
+</html>
