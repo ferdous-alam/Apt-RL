@@ -47,7 +47,7 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center" style="margin-top: 75px;">
-                <b>An advantage based policy transfer for reinforcement learning with metrics of transferability</b> 
+                <b>An advantage based policy transfer algorithm for reinforcement learning with metrics of transferability</b> 
                 <small>
                 </small>
             </h2>
@@ -107,13 +107,15 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
-                <image src="img/ant.gif"height="500px">
+                <image src="img/sac.gif"height="250px">
+                <image src="img/apt-rl.gif"height="250px">
             </div>
 
             <div class="col-md-8 col-md-offset-2">
                 <p class="text-center">
-                    Apt-RL algorithm demonstration
-                </p>
+                    <span style="margin-right:100px;">SAC policy</span>
+                    <span style="margin-left:100px;">Apt-RL policy</span>                
+                </p> 
             </div>
         </div>
         
@@ -148,26 +150,138 @@
             </div>
         </div>
 
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3 class="text-center"  style="font-weight: bold;">
-                    TL:DR
-                </h3>
-                <p class="text-justify" style="font-size: 16px;">
-                   goes here
-                </p>
+    <div class="row">
+
+        <div class="col-md-8 col-md-offset-2">
+            <h3 class="text-center" style="font-weight: bold;">
+                Experiments
+            </h3>
+            <h3>
+                Pendulum
+            </h3>
+        </div>
+        <!-- Images with labels in one row -->
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/pendulum_0.gif" alt="Ant-v3 Experiment 1" height="100px">
+                <div>source task</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/pendulum_1.gif" alt="Ant-v3 Experiment 2" height="100px">
+                <div>target task 1</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/pendulum_2.gif" alt="Ant-v3 Experiment 3" height="100px">
+                <div>target task 2</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/pendulum_3.gif" alt="Ant-v3 Experiment 4" height="100px">
+                <div>target task 3</div>
+            </div>
+            <div style="display: inline-block;">
+                <img src="img/pendulum_4.gif" alt="Ant-v3 Experiment 5" height="100px">
+                <div>target task 4</div>
             </div>
         </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Half-Cheetah-v3
+            </h3>
+        </div>
+        <!-- Images with labels in one row -->
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/half_cheetah_0.gif" alt="Ant-v3 Experiment 1" height="75px">
+                <div>source task</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/half_cheetah_1.gif" alt="Ant-v3 Experiment 2" height="75px">
+                <div>target task 1</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/half_cheetah_2.gif" alt="Ant-v3 Experiment 3" height="75px">
+                <div>target task 2</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/half_cheetah_3.gif" alt="Ant-v3 Experiment 4" height="75px">
+                <div>target task 3</div>
+            </div>
+            <div style="display: inline-block;">
+                <img src="img/half_cheetah_4.gif" alt="Ant-v3 Experiment 5" height="75px">
+                <div>target task 4</div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Ant-v3
+            </h3>
+        </div>
+        <!-- Images with labels in one row -->
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/ant_0.gif" alt="Ant-v3 Experiment 1" height="100px">
+                <div>source task</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/ant_1.gif" alt="Ant-v3 Experiment 2" height="100px">
+                <div>target task 1</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/ant_2.gif" alt="Ant-v3 Experiment 3" height="100px">
+                <div>target task 2</div>
+            </div>
+            <div style="display: inline-block; margin-right: 10px;">
+                <img src="img/ant_3.gif" alt="Ant-v3 Experiment 4" height="100px">
+                <div>target task 3</div>
+            </div>
+            <div style="display: inline-block;">
+                <img src="img/ant_4.gif" alt="Ant-v3 Experiment 5" height="100px">
+                <div>target task 4</div>
+            </div>
+        </div>
+
+    </div>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3 class="text-center"  style="font-weight: bold;">
                     Results
                 </h3>
-                <p class="text-justify" style="font-size: 16px;">
-                   goes here
-                </p>
+                <h3 class="text-left" >
+                    Task similarity
+                </h3>
+                    <!-- Images with labels in one row -->
+                    <div style="display: inline-block; margin-right: 10px;">
+                        <img src="img/pendulum_dyn_task_sim-1.png" alt="Ant-v3 Experiment 1" height="165px">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px;">
+                        <img src="img/halfcheetah_dyn_task_sim.png" alt="Ant-v3 Experiment 1" height="175px">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px;">
+                        <img src="img/ant_dyn_task_sim.png" alt="Ant-v3 Experiment 2" height="175px">
+                    </div>
+                    
+
+                    <h3 class="text-left">
+                        Transferability
+                    </h3>
+                    <!-- Images with labels in one row -->
+                    <div style="display: inline-block; margin-right: 10px;">
+                        <img src="img/pendulum_plot_2-1.png" alt="Ant-v3 Experiment 1" height="120px">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px;">
+                        <img src="img/half_cheetah_tau.png" alt="Ant-v3 Experiment 1" height="150px">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px;">
+                        <img src="img/ant_tau.png" alt="Ant-v3 Experiment 1" height="150px">
+                    </div>
+                </div>
+
+                </div>
+
+        
             </div>
         </div>
 
